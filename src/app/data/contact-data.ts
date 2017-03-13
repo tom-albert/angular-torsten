@@ -81,7 +81,7 @@ export const CONTACT_DATA = [
         phone: '',
         birthday: '',
         website: '',
-        image: '/assets/images/6.jpg',
+        image: '/assets/images/7.jpg',
         address: {
           street: '6503 tara street',
           zip: '43378',
@@ -96,7 +96,7 @@ export const CONTACT_DATA = [
         phone: '',
         birthday: '',
         website: '',
-        image: '/assets/images/7.jpg',
+        image: '/assets/images/6.jpg',
         address: {
           street: '6554 park lane',
           zip: '43378',
