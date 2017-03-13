@@ -10,11 +10,13 @@ import { OnInit } from '@angular/core';
 })
 export class ContactsAppComponent implements OnInit {
 
-    contacts: Contact[];
 
-    constructor(private contactsService: ContactsService) {}
+
+    //contacts: Contact[];
+
+    //constructor(private contactsService: ContactsService) {}
 
     ngOnInit() {
-        this.contacts = this.contactsService.getContacts();
+      //  this.contacts = this.contactsService.getContacts();
     }
 }
