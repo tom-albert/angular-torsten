@@ -3,7 +3,7 @@
 </h1>
 <md-toolbar color="accent">Contacts</md-toolbar>
 <md-list>
-    <md-list-item>
+    <md-list-item *ngFor="let contact of contacts; trackBy: trackByHeroes">
         <img md-list-avatar [src]="contact.image" alt="Picture of {{contact.name}}">
         <h3 md-line>{{contact.name}}</h3>
     </md-list-item>
