@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Contact } from './models/contact';
-import { CONTACT_DATA } from './data/contact-data';
+import {ContactsService} from "./contacts.service";
 
 @Component({
   selector: 'trm-contacts-app',
@@ -9,9 +9,11 @@ import { CONTACT_DATA } from './data/contact-data';
 })
 export class ContactsAppComponent {
 
-    contacts: Contact[] = CONTACT_DATA;
+    contacts: Contact[];
 
-    trackByHeroes(index: number, hero: Contact): number {
-        return hero.id;
+    constructor(private contactsService: ContactsService) {}
+
+    ngOnInit() {
+        this.contacts = this.contactsService.getContacts();
     }
 }
