@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ContactsService} from "../contacts.service";
 import {Contact} from "../models/contact";
-import {Http} from "@angular/http";
 import {Router} from "@angular/router";
 
 @Component({
@@ -13,8 +12,7 @@ import {Router} from "@angular/router";
 export class ContactsEditorComponent implements OnInit {
 
   private contact: Contact = <Contact>{ address: {}};
-  constructor(private route: ActivatedRoute, private contactsService: ContactsService, private http: Http, private router: Router) {
-
+  constructor(private route: ActivatedRoute, private contactsService: ContactsService, private router: Router) {
   }
 
   cancel(contact: Contact) {
@@ -22,7 +20,10 @@ export class ContactsEditorComponent implements OnInit {
   }
 
   save(contact: Contact) {
-    this.contactsService.updateContact(contact).subscribe(() => this.goToDetails(contact));
+    this.contactsService.updateContact(contact)
+        .subscribe(
+            contact => this.goToDetails(contact)
+        );
   }
 
   private goToDetails(contact:Contact) {
