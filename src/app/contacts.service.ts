@@ -18,7 +18,7 @@ export class ContactsService {
 
   getContact(id: string):Observable<Contact> {
     return this.http.get(`${this.API_ENDPOINT}/contacts/${id}`)
-        .map((res) => { return res.json().item; });
+        .map(res => res.json().item);
   }
 
   getEndPointUrl() {
@@ -28,6 +28,12 @@ export class ContactsService {
   updateContact(contact:Contact) {
     let url = this.getEndPointUrl() + `/contacts/${contact.id}`;
     return this.http.put(url, contact).map(res => res.json().item);
+  }
+
+  search(term: string):Observable<Array<Contact>> {
+    return this.http.get(`${this.API_ENDPOINT}/search?text=${term}`)
+        .map(res => res.json().items);
+
   }
 
 }
