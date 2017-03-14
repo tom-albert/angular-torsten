@@ -12,7 +12,10 @@ import {Router} from "@angular/router";
 export class ContactsEditorComponent implements OnInit {
 
   private contact: Contact = <Contact>{ address: {}};
-  constructor(private route: ActivatedRoute, private contactsService: ContactsService, private router: Router) {
+  constructor(private route: ActivatedRoute,
+              private contactsService: ContactsService,
+              private router: Router
+  ) {
   }
 
   cancel(contact: Contact) {
