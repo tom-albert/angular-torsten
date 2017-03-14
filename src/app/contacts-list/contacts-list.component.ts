@@ -26,6 +26,6 @@ export class ContactsListComponent implements OnInit {
     this.contacts = this.terms$.debounceTime(400)             // Obervable<string>
         .distinctUntilChanged()                               // Obervable<string>
         .switchMap(term => this.contactsService.search(term)) // Observable<Array<Contact>>
-        .merge(this.contactsService.getContacts().delay(5000).takeUntil(this.terms$));           // Observable<Array<Contact>>
+        .merge(this.contactsService.getContacts().delay(5).takeUntil(this.terms$));           // Observable<Array<Contact>>
   }
 }

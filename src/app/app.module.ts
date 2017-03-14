@@ -12,9 +12,10 @@ import { ContactDetailComponent } from './contact-detail/contact-detail.componen
 import { HttpModule } from '@angular/http';
 import {FormsModule} from "@angular/forms";
 import { ContactsEditorComponent } from './contacts-editor/contacts-editor.component';
+import { ContactsDetailViewComponent } from './contacts-detail-view/contacts-detail-view.component';
 
 @NgModule({
-  declarations: [ContactsAppComponent, ContactsListComponent, ContactDetailComponent, ContactsEditorComponent],
+  declarations: [ContactsAppComponent, ContactsListComponent, ContactDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent],
   imports: [
     BrowserModule,
     MaterialModule,
