@@ -4,6 +4,10 @@ import {ContactsService} from "../contacts.service";
 import {Observable, Subject} from "rxjs";
 import "rxjs/add/operator/debounceTime";
 import "rxjs/add/operator/distinctUntilChanged";
+import "rxjs/add/operator/switchMap";
+import "rxjs/add/operator/merge";
+import "rxjs/add/operator/delay";
+import "rxjs/add/operator/takeUntil";
 
 @Component({
   selector: 'trm-contacts-list',
@@ -19,13 +23,9 @@ export class ContactsListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.contacts = this.contactsService.getContacts();
-    this.terms$.debounceTime(400)
-        .distinctUntilChanged()
-        .subscribe(term => this.search(term));
-  }
-
-  search(term: string) {
-    this.contacts = this.contactsService.search(term);
+    this.contacts = this.terms$.debounceTime(400)             // Obervable<string>
+        .distinctUntilChanged()                               // Obervable<string>
+        .switchMap(term => this.contactsService.search(term)) // Observable<Array<Contact>>
+        .merge(this.contactsService.getContacts().delay(5000).takeUntil(this.terms$));           // Observable<Array<Contact>>
   }
 }
