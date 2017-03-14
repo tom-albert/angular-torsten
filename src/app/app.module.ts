@@ -10,22 +10,26 @@ import {RouterModule} from "@angular/router";
 import { APP_ROUTES } from './app.routes';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { HttpModule } from '@angular/http';
+import {FormsModule} from "@angular/forms";
+import { ContactsEditorComponent } from './contacts-editor/contacts-editor.component';
 
 @NgModule({
-  declarations: [ContactsAppComponent, ContactsListComponent, ContactDetailComponent],
+  declarations: [ContactsAppComponent, ContactsListComponent, ContactDetailComponent, ContactsEditorComponent],
   imports: [
     BrowserModule,
     MaterialModule,
     FlexLayoutModule,
     RouterModule,
     RouterModule.forRoot(APP_ROUTES),
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
   bootstrap: [ContactsAppComponent],
   providers: [
     { provide: ContactsService, useClass: ContactsService }
   ]
 })
+
 export class ContactsModule {
 
 }
