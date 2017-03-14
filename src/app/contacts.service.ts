@@ -29,6 +29,7 @@ export class ContactsService {
     let url = this.getEndPointUrl() + `/contacts/${contact.id}`;
     //console.log('save' + url);
 
-    this.http.put(url, contact).subscribe(contact => contact = contact)
+    return this.http.put(url, contact);
   }
+
 }
