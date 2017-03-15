@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {ContactsService} from "../contacts.service";
 import {Router} from "@angular/router";
+import {Contact} from "../models/contact";
 
 
 @Component({
@@ -16,8 +16,8 @@ import {Router} from "@angular/router";
 })
 export class ContactsDetailViewComponent implements OnInit {
 
-  private contact;
-  constructor(private route: ActivatedRoute, private contactsService: ContactsService, private router: Router) {
+  private contact:Contact;
+  constructor(private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -30,7 +30,14 @@ export class ContactsDetailViewComponent implements OnInit {
     //  this.contactsService.getContact(params['id']).subscribe(contact => this.contact = contact);
     //});
 
-     this.route.params.switchMap(params => this.contactsService.getContact(params['id'])).subscribe(contact => this.contact = contact);
+     //this.route.params.switchMap(params => this.contactsService.getContact(params['id'])) // Observable<Contact>
+     //    .subscribe(
+     //        contact => this.contact = contact
+     //    );
+
+    this.route.data
+        .map(data => data['contact'])  // extract contact
+        .subscribe(contact => this.contact = contact);
   }
 
   navigateToEditor(contact) {

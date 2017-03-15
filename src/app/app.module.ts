@@ -17,6 +17,7 @@ import { TabComponent } from './tabs/tab/tab.component';
 import { TabsComponent } from './tabs/tabs/tabs.component';
 import { AboutComponent } from './about/about.component';
 import { ContactsDashboardComponent } from './contacts-dashboard/contacts-dashboard.component';
+import {ContactResolver} from "./shared/contacts.resolver";
 
 @NgModule({
   declarations: [ContactsAppComponent, ContactsListComponent, ContactDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent, TabComponent, TabsComponent, AboutComponent, ContactsDashboardComponent],
@@ -32,6 +33,7 @@ import { ContactsDashboardComponent } from './contacts-dashboard/contacts-dashbo
   bootstrap: [ContactsAppComponent],
   providers: [
     { provide: ContactsService, useClass: ContactsService },
+    ContactResolver,
     {
       provide: 'ConfirmNavigationGuard',
       useValue: confirmNavigationGuard

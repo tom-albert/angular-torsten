@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 export class ContactsEditorComponent implements OnInit {
 
   warnOnClosing = true;
-  private contact: Contact = <Contact>{ address: {}};
+  private contact: Contact;
   constructor(private route: ActivatedRoute,
               private contactsService: ContactsService,
               private router: Router
@@ -36,8 +36,12 @@ export class ContactsEditorComponent implements OnInit {
   }
 
   ngOnInit() {
-    let id = this.route.snapshot.params['id'];
-    this.contactsService.getContact(id)
+    //let id = this.route.snapshot.params['id'];
+    //this.contactsService.getContact(id)
+    //    .subscribe(contact => this.contact = contact);
+
+    this.route.data
+        .map(data => data['contact'])
         .subscribe(contact => this.contact = contact);
   }
 }
