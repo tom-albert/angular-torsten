@@ -21,6 +21,11 @@ export class ContactsService {
         .map(res => res.json().item);
   }
 
+  addContact(contact: Contact) {
+    let url = this.getEndPointUrl() + `/contacts`;
+    return this.http.post(url, contact).map(res => res.json().item);
+  }
+
   getEndPointUrl() {
     return this.API_ENDPOINT;
   }

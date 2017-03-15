@@ -4,6 +4,9 @@
   </md-input-container>
   <md-icon color="accent">search</md-icon>
 </md-toolbar>
+<a md-fab title="Add a new contact" class="trm-floating-button" [routerLink]="['/contact/new']">
+  <md-icon class="md-24">add</md-icon>
+</a>
 <md-nav-list>
   <a md-list-item [routerLink]="['/contact', contact.id]"
      *ngFor="let contact of contacts | async">
