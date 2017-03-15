@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
 })
 export class ContactsEditorComponent implements OnInit {
 
+  warnOnClosing = true;
   private contact: Contact = <Contact>{ address: {}};
   constructor(private route: ActivatedRoute,
               private contactsService: ContactsService,
@@ -23,6 +24,7 @@ export class ContactsEditorComponent implements OnInit {
   }
 
   save(contact: Contact) {
+    this.warnOnClosing = false;
     this.contactsService.updateContact(contact)
         .subscribe(
             contact => this.goToDetails(contact)

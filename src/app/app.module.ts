@@ -31,10 +31,19 @@ import { ContactsDashboardComponent } from './contacts-dashboard/contacts-dashbo
   ],
   bootstrap: [ContactsAppComponent],
   providers: [
-    { provide: ContactsService, useClass: ContactsService }
+    { provide: ContactsService, useClass: ContactsService },
+    {
+      provide: 'ConfirmNavigationGuard',
+      useValue: confirmNavigationGuard
+    }
   ]
 })
 
 export class ContactsModule {
 
+}
+
+// Needs to be an exported function for AOT to work
+export function confirmNavigationGuard(component: ContactsEditorComponent) {
+  return !component.warnOnClosing || window.confirm('Navigate away without saving?');
 }
