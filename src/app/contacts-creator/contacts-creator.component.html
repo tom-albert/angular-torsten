@@ -14,8 +14,11 @@
               Invalid Name {{name.errors.minlength.actualLength}}/{{name.errors.minlength.requiredLength}}
             </md-hint>
           </md-input-container>
-          <md-input-container fxFlex>
-            <input mdInput placeholder="Email" name="email" ngModel>
+          <md-input-container fxFlex [dividerColor]="email.errors ? 'warn' : 'primary'">
+            <input mdInput placeholder="Email" name="email" #email="ngModel" ngModel trmValidateEmail>
+            <md-hint align="end" *ngIf="!email.valid && !email.pristine">
+              Email not valid
+            </md-hint>
           </md-input-container>
           <md-input-container fxFlex>
             <input mdInput placeholder="Birthday" name="birthday" type="date" ngModel>
