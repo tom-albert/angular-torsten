@@ -15,9 +15,11 @@ import { ContactsEditorComponent } from './contacts-editor/contacts-editor.compo
 import { ContactsDetailViewComponent } from './contacts-detail-view/contacts-detail-view.component';
 import { TabComponent } from './tabs/tab/tab.component';
 import { TabsComponent } from './tabs/tabs/tabs.component';
+import { AboutComponent } from './about/about.component';
+import { ContactsDashboardComponent } from './contacts-dashboard/contacts-dashboard.component';
 
 @NgModule({
-  declarations: [ContactsAppComponent, ContactsListComponent, ContactDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent, TabComponent, TabsComponent],
+  declarations: [ContactsAppComponent, ContactsListComponent, ContactDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent, TabComponent, TabsComponent, AboutComponent, ContactsDashboardComponent],
   imports: [
     BrowserModule,
     MaterialModule,
